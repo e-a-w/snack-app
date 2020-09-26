@@ -1,16 +1,20 @@
 {
-  "name": "figure-finder",
+  "name": "snack-app",
   "version": "0.1.0",
   "main": "index.js",
+  "license": "0BSD",
   "dependencies": {
-    "bootstrap": "^4.5.2",
+    "axios": "^0.20.0",
     "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "path": "^0.12.7",
-    "react-router-dom": "^5.2.0"
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
