@@ -1,4 +1,4 @@
-// require("./db/config");
+require("./db/config");
 const express = require("express"),
   path = require("path"),
   passport = require("./middleware"),
