@@ -1,5 +1,6 @@
 const router = require("express").Router(),
-  //   User = require("../../db/models/user"),
+  jwt = require("jsonwebtoken"),
+  User = require("../../db/models/user.model"),
   axios = require("axios");
 
 // Get Random Recipe

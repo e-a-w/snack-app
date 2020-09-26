@@ -19,7 +19,6 @@ const RecipePage = ({ match }) => {
 
   return (
     <div>
-      <Navaigation />
       <h2 class="name">{recipe?.title}</h2>
       <div class="box">
         <div>
@@ -36,7 +35,6 @@ const RecipePage = ({ match }) => {
           <p>{recipe?.readyInMinutes}</p>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

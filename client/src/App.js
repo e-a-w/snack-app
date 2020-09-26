@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import RecipePage from "./pages/RecipePage";
 import SignUp from "./pages/SignUp";
 import Account from "./pages/Account";
+import SecureRoute from "./routes/SecureRoute";
+import GuestRoute from "./routes/GuestRoute";
 
 function App() {
   return (
@@ -16,10 +18,10 @@ function App() {
         <Navaigation />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/recipe/:id" component={RecipePage} />
-          <Route exact path="/account" component={Account} />
+          <GuestRoute exact path="/login" component={Login} />
+          <GuestRoute exact path="/signup" component={SignUp} />
+          <SecureRoute exact path="/account" component={Account} />
         </Switch>
         <Footer />
       </Router>

@@ -1,4 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"),
+  jwt = require("jsonwebtoken"),
+  bcrypt = require("bcryptjs"),
+  Snack = require("./snack.model");
 
 const Schema = mongoose.Schema;
 
@@ -7,25 +10,30 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
     },
     password: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
       minlength: 6,
     },
     email: {
-      type: email,
+      type: String,
       required: true,
       unique: true,
     },
-
     snacks: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Snack",
+      },
+    ],
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true,
+        },
       },
     ],
   },
@@ -37,10 +45,10 @@ const userSchema = new Schema(
 // hide password & tokens for security
 userSchema.methods.toJSON = function () {
   const user = this;
-  const userObject = author.toObject();
+  const userObject = user.toObject();
   delete userObject.password;
-  delete userObject.tokens;
-  return userrObject;
+  // delete userObject.tokens;
+  return userObject;
 };
 
 // generate jwt token
@@ -56,7 +64,7 @@ userSchema.methods.generateAuthToken = async function () {
   return token;
 };
 
-// find author by email and password
+// find user by email and password
 userSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) throw new Error("account doesn't exist");
