@@ -33,11 +33,11 @@ router.post("/api/recipe/search", async (req, res) => {
 });
 
 // Get Recipe by ID
-router.get("/api/recipe/:id", async (req, res) => {
+router.get("/api/recipe", async (req, res) => {
   try {
     const { query } = req.query;
     const { data } = await axios.get(
-      `https://api.spoonacular.com/recipes/${req.params.id}/information?apiKey=${process.env.SPOONACULAR}&query=${query}`
+      `https://api.spoonacular.com/recipes/${query}/information?apiKey=${process.env.SPOONACULAR}&query=${query}`
     );
     res.status(200).json(data);
   } catch (error) {
