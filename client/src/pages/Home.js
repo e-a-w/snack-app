@@ -1,9 +1,22 @@
 import React from "react";
+import Navaigation from "../components/Navaigation";
+import Footer from "../components/Footer";
+import Photo from "../components/Photo";
 
 const Home = () => {
   return (
     <div>
-      <h1>HOME</h1>
+      <Navaigation />
+      <Photo />
+      <div> .</div>
+      <div>. </div>
+      <div> .</div>
+      <div> .</div>
+      <div>. </div>
+      <div>. </div>
+      <div> .</div>
+      <div> .</div>
+      <Footer />
     </div>
   );
 };

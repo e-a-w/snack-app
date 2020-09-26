@@ -1,0 +1,31 @@
+/* footer */
+
+.main-footer {
+  color: white;
+  background-color: #4c5638;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  margin-top: 40px;
+  list-style-type: none;
+}
+
+.bottomtext {
+  text-align: center;
+  font-size: 10px;
+}
+
+.logo {
+  margin-bottom: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.jumbotron {
+  background-image: url(./assets/Photo.jpg);
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
