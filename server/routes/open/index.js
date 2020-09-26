@@ -8,7 +8,6 @@ router.get("/api/recipe/random", async (req, res) => {
     const { data } = await axios.get(
       `https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR}`
     );
-    // const ingredients = data.
     res.status(200).json(data);
   } catch (error) {
     if (error) {

@@ -10,7 +10,12 @@ const Footer = () => {
           {}
           <div className="col">
             <a href={`/`}>
-              <img className="logo" width="150px" src={SnackBasket} />{" "}
+              <img
+                className="logo"
+                alt="logo"
+                width="150px"
+                src={SnackBasket}
+              />{" "}
             </a>
             <p>
               <em> Get your Snack on!</em>{" "}

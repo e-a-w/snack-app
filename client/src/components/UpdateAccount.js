@@ -1,33 +1,40 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "../context/AppContext";
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Container, Form, Button } from "react-bootstrap";
 
-const SignUp = ({ history }) => {
+const UpdateAccount = () => {
   const [formData, setFormData] = useState({});
-  const { setCurrentUser } = useContext(AppContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/user", formData)
-      .then(({ data }) => {
-        sessionStorage.setItem("user", data.data);
-        setCurrentUser(data.data);
-        if (data) {
-          history.push("/account");
-        }
-        alert("Account creation successful!");
+      .patch("/api/user", formData, { withCredentials: true })
+      .then((data) => {
+        alert("Updates successful!");
       })
       .catch((err) => {
         console.log(err);
         alert("Something went wrong! Try again.");
       });
   };
+
+  const handleDelete = () => {
+    axios
+      .delete("/api/user", { withCredentials: true })
+      .then((data) => {
+        window.confirm(
+          "Are you sure you want to delete your account? This action is PERMANENT and your information cannot be recovered."
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Something went wrong! Try again.");
+      });
+  };
+
   return (
-    <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1 className="mb-4">Sign up Now</h1>
+    <>
+      <h3 className="mb-3">Update Information</h3>
       <Form onSubmit={handleSubmit} style={{ width: 300 }}>
         <Form.Group>
           <Form.Label htmlFor="fullName">Full Name</Form.Label>
@@ -65,15 +72,17 @@ const SignUp = ({ history }) => {
             name="password"
           />
         </Form.Group>
-        <Form.Group className="d-flex justify-content-center">
-          <Button type="submit">Login</Button>
+        <Form.Group className="d-flex justify-content-flex-start">
+          <Button className="mr-3" type="submit">
+            Submit Updates
+          </Button>
+          <Button onClick={handleDelete} variant="danger">
+            Delete Account
+          </Button>
         </Form.Group>
       </Form>
-      <Link className="mt-4" to="/login">
-        Already have an account? Login.
-      </Link>
-    </Container>
+    </>
   );
 };
 
-export default SignUp;
+export default UpdateAccount;
