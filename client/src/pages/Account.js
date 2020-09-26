@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import UpdateAccount from "../components/UpdateAccount";
 import ViewSaved from "../components/ViewSaved";
 import { Container, Button } from "react-bootstrap";
 
 const Account = () => {
+  const { currentUser } = useContext(AppContext);
   const [view, setView] = useState(true);
+  console.log(currentUser);
 
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <div className="mb-5 text-center">
-        <h1 className="mb-3">Your Account</h1>
+        <h1 className="mb-3">Welcome, {currentUser?.username}</h1>
         {
           <Button
             variant="secondary"

@@ -68,7 +68,7 @@ router.patch("/api/snacks/:id", async (req, res) => {
 router.delete("/api/snacks/:id", async (req, res) => {
   try {
     const snack = await Snack.findById(req.params.id);
-    await Author.findByIdAndUpdate(req.user._id, {
+    await User.findByIdAndUpdate(req.user._id, {
       $pull: { snacks: { $in: [req.params.id] } },
     });
     snack.remove();

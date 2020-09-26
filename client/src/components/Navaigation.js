@@ -7,6 +7,7 @@ import Logout from "./Logout";
 
 const Navaigation = () => {
   const { currentUser } = useContext(AppContext);
+  console.log(currentUser);
   return (
     <div>
       <Navbar className="justify-content-between ">
@@ -24,7 +25,7 @@ const Navaigation = () => {
             </Form>
           </Nav.Item>
           <Nav.Item>
-            {!currentUser ? (
+            {currentUser ? (
               <Logout />
             ) : (
               <Button id="navbtn" href="./login" variant="link">
@@ -38,7 +39,7 @@ const Navaigation = () => {
               id="navbtn"
               variant="outline-info"
             >
-              {!currentUser ? "Account" : "Sign Up"}
+              {currentUser ? "Account" : "Sign Up"}
             </Button>
           </Nav.Item>
         </Nav>

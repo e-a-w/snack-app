@@ -30,15 +30,15 @@ const SignUp = ({ history }) => {
       <h1 className="mb-4">Sign up Now</h1>
       <Form onSubmit={handleSubmit} style={{ width: 300 }}>
         <Form.Group>
-          <Form.Label htmlFor="fullName">Full Name</Form.Label>
+          <Form.Label htmlFor="userame">Full Name</Form.Label>
           <Form.Control
             onChange={(e) =>
               setFormData({ ...formData, [e.target.name]: e.target.value })
             }
-            id="fullName"
+            id="username"
             type="text"
-            placeholder="Full Name"
-            name="name"
+            placeholder="Username"
+            name="username"
           />
         </Form.Group>
         <Form.Group>
