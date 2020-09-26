@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AppContextProvider } from "./context/AppContext";
 import Navaigation from "./components/Navaigation";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -9,16 +10,18 @@ import Account from "./pages/Account";
 
 function App() {
   return (
-    <Router>
-      <Navaigation />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/account" component={Account} />
-      </Switch>
-      <Footer />
-    </Router>
+    <AppContextProvider>
+      <Router>
+        <Navaigation />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/account" component={Account} />
+        </Switch>
+        <Footer />
+      </Router>
+    </AppContextProvider>
   );
 }
 
