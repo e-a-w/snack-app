@@ -7,7 +7,6 @@ import { Container, Button } from "react-bootstrap";
 const Account = () => {
   const { currentUser } = useContext(AppContext);
   const [view, setView] = useState(true);
-  console.log(currentUser);
 
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">

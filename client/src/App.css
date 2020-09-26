@@ -43,9 +43,17 @@ a {
 
 .box {
   display: flex;
+  flex-wrap: wrap;
   padding: 15px;
   margin-bottom: 50px;
-  height: 600px;
+  width: 90vw;
+  max-width: 600px;
+}
+
+/* image */
+img.recipe-img {
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* title/name */
@@ -61,12 +69,24 @@ a {
 /*style recipe card*/
 
 .recipe {
-  flex: display;
-  width: 75%;
-  height: 500px;
-  padding-right: 20px;
-  padding-left: 20px;
-  margin-right: 20px;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (min-width: 1000px) {
+  .box {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+  }
+  img.recipe-img {
+    width: 30vw;
+    align-self: flex-start;
+    margin-right: 50px;
+  }
+  .recipe {
+    width: 100%;
+  }
 }
