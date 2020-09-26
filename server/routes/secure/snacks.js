@@ -3,7 +3,6 @@ const router = require("express").Router();
 
 // Create (Save) New Snack for Current User
 router.post("/api/snacks", async (req, res) => {
-  // const { ingredients } = req.body;
   try {
     const newSnack = new Snack({ ingredients });
     await newSnack.save();

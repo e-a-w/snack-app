@@ -10,7 +10,6 @@ const UpdateAccount = () => {
     axios
       .patch("/api/user", formData, { withCredentials: true })
       .then((data) => {
-        console.log(data);
         alert("Updates successful!");
       })
       .catch((err) => {
@@ -23,7 +22,6 @@ const UpdateAccount = () => {
     axios
       .delete("/api/user", { withCredentials: true })
       .then((data) => {
-        console.log(data);
         window.confirm(
           "Are you sure you want to delete your account? This action is PERMANENT and your information cannot be recovered."
         );
@@ -37,7 +35,7 @@ const UpdateAccount = () => {
   return (
     <>
       <h3 className="mb-3">Update Information</h3>
-      <Form style={{ width: 300 }}>
+      <Form onSubmit={handleSubmit} style={{ width: 300 }}>
         <Form.Group>
           <Form.Label htmlFor="fullName">Full Name</Form.Label>
           <Form.Control
@@ -75,7 +73,7 @@ const UpdateAccount = () => {
           />
         </Form.Group>
         <Form.Group className="d-flex justify-content-flex-start">
-          <Button className="mr-3" type="submit" onClick={handleSubmit}>
+          <Button className="mr-3" type="submit">
             Submit Updates
           </Button>
           <Button onClick={handleDelete} variant="danger">
