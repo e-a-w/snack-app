@@ -1,10 +1,9 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import { Card, Button } from "react-bootstrap";
 
 const RecipeCards = () => {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem" }} className="mx-5">
       <Card.Img variant="top" src="" />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>

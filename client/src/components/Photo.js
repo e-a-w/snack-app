@@ -4,15 +4,12 @@ import { Button } from "react-bootstrap";
 
 const Photo = () => {
   return (
-    <div>
-      <Jumbotron>
-        <h1>Get your Snack On!</h1>
-        <p></p>
-        <p>
-          <Button variant="primary">Learn more</Button>
-        </p>
-      </Jumbotron>
-    </div>
+    <Jumbotron className="home">
+      <h1>Get your Snack On!</h1>
+      <p>
+        <Button variant="primary">Learn more</Button>
+      </p>
+    </Jumbotron>
   );
 };
 

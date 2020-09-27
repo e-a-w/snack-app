@@ -1,7 +1,6 @@
 const mongoose = require("mongoose"),
   jwt = require("jsonwebtoken"),
-  bcrypt = require("bcryptjs"),
-  Snack = require("./snack.model");
+  bcrypt = require("bcryptjs");
 
 const Schema = mongoose.Schema;
 
@@ -26,10 +25,6 @@ const userSchema = new Schema(
       {
         type: String,
       },
-      // {
-      //   type: mongoose.Schema.Types.ObjectId,
-      //   ref: "Snack",
-      // },
     ],
     tokens: [
       {
