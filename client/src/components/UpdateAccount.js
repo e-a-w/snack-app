@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 const UpdateAccount = () => {
+  const { setCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState({});
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     axios
       .patch("/api/user", formData, { withCredentials: true })
       .then((data) => {
+        setCurrentUser(data);
         alert("Updates successful!");
       })
       .catch((err) => {

@@ -11,7 +11,7 @@ const Account = () => {
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <div className="mb-5 text-center">
-        <h1 className="mb-3">Welcome, {currentUser?.username}</h1>
+        <h1 className="mb-3">Welcome {currentUser?.username}</h1>
         {
           <Button
             variant="secondary"

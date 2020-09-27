@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const ViewSaved = () => {
-  const { currentUser } = useContext(AppContext);
+  const { currentUser, setCurrentUser } = useContext(AppContext);
   const [snackIds, setSnackIds] = useState(currentUser?.snacks?.join());
   const [snacks, setSnacks] = useState([]);
 
@@ -16,13 +16,15 @@ const ViewSaved = () => {
         setSnacks(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [snackIds]);
 
   const handleRemove = (snackID) => {
     window.confirm("Are you sure you want to remove this snack?");
     axios
       .patch(`/api/snacks?query=${snackID}`, { withCredentials: true })
       .then(({ data }) => {
+        setCurrentUser(data);
+        setSnackIds(data.snacks.join());
         alert("Snack removed!");
       })
       .catch((error) => console.log(error));

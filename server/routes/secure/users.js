@@ -15,6 +15,7 @@ router.patch("/api/user", async (req, res) => {
   try {
     updates.forEach((update) => (req.user[update] = req.body[update]));
     await req.user.save();
+    //must return full user data
     res.json(req.user);
   } catch (error) {
     res.status(400).json({ error: error.toString() });
