@@ -1,43 +1,69 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import { Card, Button } from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ViewSaved = () => {
-  const dummyArray = [1, 2, 3, 4, 5, 6];
-  const handleRemove = (snackID) => {
+  const { currentUser } = useContext(AppContext);
+  const [snackIds, setSnackIds] = useState(currentUser?.snacks?.join());
+  const [snacks, setSnacks] = useState([]);
+
+  useEffect(() => {
     axios
-      .delete(`/api/snack/${snackID}`, { withCredentials: true })
-      .then((data) => {
-        console.log(data);
-        window.confirm("Are you sure you want to remove this snack?");
+      .get(`/api/snacks/${snackIds}`, { withCredentials: true })
+      .then(({ data }) => {
+        setSnacks(data);
       })
-      .catch((err) => {
-        console.log(err);
-        alert("Something went wrong! Try again.");
-      });
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleRemove = (snackID) => {
+    window.confirm("Are you sure you want to remove this snack?");
+    axios
+      .patch(`/api/snacks?query=${snackID}`, { withCredentials: true })
+      .then(({ data }) => {
+        alert("Snack removed!");
+      })
+      .catch((error) => console.log(error));
   };
+
   return (
     <>
       {" "}
       <h3 className="mb-3">Saved Snacks:</h3>
       <div className="d-flex flex-wrap justify-content-center">
-        {dummyArray.map((snack, i) => {
-          return (
-            <Card key={i} className="mx-3 mb-3">
-              <Card.Header>
-                <Card.Title>Snack</Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <h3>Snack</h3>
-              </Card.Body>
-              <Card.Footer>
-                <Button variant="danger" onClick={() => handleRemove(i)}>
-                  Remove
-                </Button>
-              </Card.Footer>
-            </Card>
-          );
-        })}
+        {currentUser &&
+          snacks?.map((snack) => {
+            return (
+              <Card
+                style={{ maxWidth: "300px" }}
+                key={snack.id}
+                className="mx-3 mb-3"
+              >
+                <Card.Header className="text-center">
+                  <Card.Title as={Link} to={`/recipe/${snack.id}`}>
+                    {snack.title}
+                  </Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  <img
+                    style={{ width: "100%" }}
+                    alt="snack-img"
+                    src={snack.image}
+                  />
+                </Card.Body>
+                <Card.Footer>
+                  <Button
+                    variant="danger"
+                    onClick={() => handleRemove(snack.id)}
+                  >
+                    Remove
+                  </Button>
+                </Card.Footer>
+              </Card>
+            );
+          })}
       </div>
     </>
   );
