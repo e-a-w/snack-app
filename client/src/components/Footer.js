@@ -1,8 +1,25 @@
 import React from "react";
 import "../App.css";
+import { useHistory } from "react-router-dom";
 import SnackBasket from "../assets/SnackBasket.png";
+import axios from "axios";
 
 const Footer = () => {
+  const history = useHistory();
+
+  const getRandom = () => {
+    axios
+      .get("/api/recipe/random")
+      .then(({ data }) => {
+        // setRandomId(data.recipes[0].id);
+        console.log(data.recipes[0].id);
+        history.push(`/recipe/${data.recipes[0].id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="main-footer">
       <div className="container">
@@ -29,7 +46,13 @@ const Footer = () => {
           <div className="col">
             <h4>Menu</h4>
             <ul className="list-unstyled"></ul>
-            <li className="brightblue">Random Recipe</li>
+            <li
+              className="brightblue"
+              style={{ cursor: "pointer" }}
+              onClick={getRandom}
+            >
+              Random Recipe
+            </li>
             <li href="/" className="brightblue">
               Add This
             </li>

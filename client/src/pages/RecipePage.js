@@ -27,8 +27,8 @@ const RecipePage = ({ match }) => {
           <div>{parse(`${recipe?.instructions}`)}</div>
           <h4>Ingredients:</h4>
           <ul>
-            {recipe?.extendedIngredients?.map((ing) => {
-              return <li key={ing.id}>{ing.name}</li>;
+            {recipe?.extendedIngredients?.map((ing, i) => {
+              return <li key={i}>{ing.name}</li>;
             })}
           </ul>
           <h4>Servings</h4>

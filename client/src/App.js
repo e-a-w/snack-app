@@ -7,14 +7,15 @@ import Login from "./pages/Login";
 import RecipePage from "./pages/RecipePage";
 import SignUp from "./pages/SignUp";
 import Account from "./pages/Account";
+import Footer from "./components/Footer";
 import SecureRoute from "./routes/SecureRoute";
 import GuestRoute from "./routes/GuestRoute";
 
 function App() {
   return (
     <AppContextProvider>
-      <span className="app">
-        <Router>
+      <Router>
+        <span className="app">
           <Navaigation />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -23,8 +24,9 @@ function App() {
             <GuestRoute exact path="/signup" component={SignUp} />
             <SecureRoute exact path="/account" component={Account} />
           </Switch>
-        </Router>
-      </span>
+        </span>
+        <Footer />
+      </Router>
     </AppContextProvider>
   );
 }
