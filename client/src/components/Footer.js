@@ -11,8 +11,6 @@ const Footer = () => {
     axios
       .get("/api/recipe/random")
       .then(({ data }) => {
-        // setRandomId(data.recipes[0].id);
-        console.log(data.recipes[0].id);
         history.push(`/recipe/${data.recipes[0].id}`);
       })
       .catch((err) => {

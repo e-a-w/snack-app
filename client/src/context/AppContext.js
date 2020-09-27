@@ -3,6 +3,7 @@ import axios from "axios";
 const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
+  const [searchResults, setSearchResults] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const user = sessionStorage.getItem("user");
 
@@ -23,6 +24,8 @@ const AppContextProvider = ({ children }) => {
         currentUser,
         setCurrentUser,
         user,
+        searchResults,
+        setSearchResults,
       }}
     >
       {children}
