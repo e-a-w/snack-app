@@ -12,12 +12,7 @@ This app was built as a challenge for Shellhacks 2020!
 
 Snack Basket was created using React and Bootstrap on the front end, Node.js and Express on the back end, and MongoDB for a database. We also used the Spoonacular API for our recipe data.
 
-### Screenshots
-
-|                                                                |                                                                  |
-| :------------------------------------------------------------: | :--------------------------------------------------------------: |
-|  <img width="500px" alt="home" src="./screenshots/home.png"/>  | <img width="500px" alt="recipe" src="./screenshots/recipe.png"/> |
-| <img width="500px" alt="saved" src="./screenshots/saved.png"/> |  <img width="500px" alt="about" src="./screenshots/about.png"/>  |
+View it [here](https://snack-basket.herokuapp.com/)!
 
 ### Getting Started
 
