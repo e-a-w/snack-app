@@ -6,7 +6,7 @@
 
 Snack Basket is an app that allows you to search and save your favorite recipes! You can find random recipes, search by keyword for recipes, and if you are logged in, save and remove your favorite recipes.
 
-This app was built as a challenge for Shellhacks 2020!
+This app was built as a challenge for Shellhacks 2020! You can see the hackathon submission [here](https://devpost.com/software/snack-basket)!
 
 ### Built With
 
