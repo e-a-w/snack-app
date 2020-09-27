@@ -6,13 +6,18 @@
 
 Snack Basket is an app that allows you to search and save your favorite recipes! You can find random recipes, search by keyword for recipes, and if you are logged in, save and remove your favorite recipes.
 
-This app was built as a challenge for Shellhacks 2020! You can see the hackathon submission [here](https://devpost.com/software/snack-basket)!
+This app was built as a challenge for Shellhacks 2020! You can see the hackathon submission [here](https://devpost.com/software/snack-basket), or [ view the app live](https://snack-basket.herokuapp.com/)!
 
 ### Built With
 
 Snack Basket was created using React and Bootstrap on the front end, Node.js and Express on the back end, and MongoDB for a database. We also used the Spoonacular API for our recipe data.
 
-View it [here](https://snack-basket.herokuapp.com/)!
+### Screenshots
+
+|                                                                  |                                                                |
+| :--------------------------------------------------------------: | :------------------------------------------------------------- |
+|   <img width="500px" alt="home" src="./screenshots/Home.png"/>   | <img width="500px" alt="saved" src="./screenshots/Saved.png"/> |
+| <img width="500px" alt="recipe" src="./screenshots/Recipe.png"/> | <img width="500px" alt="about" src="./screenshots/About.png"/> |
 
 ### Getting Started
 
