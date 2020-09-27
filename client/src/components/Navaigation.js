@@ -7,7 +7,6 @@ import Logout from "./Logout";
 
 const Navaigation = () => {
   const { currentUser } = useContext(AppContext);
-  console.log(currentUser);
   return (
     <div>
       <Navbar className="justify-content-between ">

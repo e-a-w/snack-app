@@ -1,26 +1,35 @@
-const router = require("express").Router();
-// Snack = require("../../db/models/snack");
+const router = require("express").Router(),
+  axios = require("axios"),
+  Snack = require("../../db/models/snack.model");
 
-// Create (Save) New Snack for Current User
-router.post("/api/snacks", async (req, res) => {
+// Toggle Saved Snacks for Current User
+router.patch("/api/snacks", async (req, res) => {
+  let { query } = req.query;
   try {
-    const newSnack = new Snack({ ingredients });
-    await newSnack.save();
-    req.user.snacks.push(newSnack._id);
-    await req.user.save();
-    res.status(201).json(newSnack);
+    if (req.user.snacks.includes(query)) {
+      req.user.snacks.pull(query);
+    } else {
+      req.user.snacks.push(query);
+    }
+    req.user.save();
+    // must send full user data back as response
+    res.send(req.user);
   } catch (err) {
     res.status(500).json({ err: err.toString() });
   }
 });
 
-// Get All Current User's Snacks
-router.get("/api/snacks/:id", async (req, res) => {
+// Get Info For All Current User's Snacks
+router.get("/api/snacks/:ids", async (req, res) => {
   try {
     if (!req.user.snacks) {
       res.send(404);
     }
-    res.send(200).json(req.user.snacks);
+    const { ids } = req.params;
+    const { data } = await axios.get(
+      `https://api.spoonacular.com/recipes/informationBulk?apiKey=${process.env.SPOONACULAR}&ids=${ids}`
+    );
+    res.status(200).json(data);
   } catch (error) {
     if (error) {
       res.status(500).json({ error: error.toString() });

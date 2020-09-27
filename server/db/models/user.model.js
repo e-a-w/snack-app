@@ -24,9 +24,12 @@ const userSchema = new Schema(
     },
     snacks: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Snack",
+        type: String,
       },
+      // {
+      //   type: mongoose.Schema.Types.ObjectId,
+      //   ref: "Snack",
+      // },
     ],
     tokens: [
       {
