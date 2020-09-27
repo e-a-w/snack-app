@@ -1,12 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import axios from "axios";
 import { Nav, Navbar, Form, FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import SnackBasket from "../assets/SnackBasket.png";
 import Logout from "./Logout";
 
 const Navaigation = () => {
-  const { currentUser } = useContext(AppContext);
+  const { currentUser, setSearchResults } = useContext(AppContext);
+
+  const [searchQuery, setSearchQuery] = useState();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`/api/recipe/search?query=${searchQuery}`)
+      .then(({ data }) => setSearchResults(data))
+      .catch((err) => {
+        console.log(err);
+        alert("error");
+      });
+  };
+
   return (
     <div>
       <Navbar className="justify-content-between ">
@@ -15,11 +29,12 @@ const Navaigation = () => {
         </Navbar.Brand>
         <Nav>
           <Nav.Item>
-            <Form inline>
+            <Form onSubmit={handleSubmit} inline>
               <FormControl
                 type="text"
                 placeholder="Search"
                 className="mr-sm-2"
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </Form>
           </Nav.Item>
