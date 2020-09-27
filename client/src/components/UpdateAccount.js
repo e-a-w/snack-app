@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { Form, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const UpdateAccount = () => {
+  const history = useHistory();
   const { setCurrentUser } = useContext(AppContext);
   const [formData, setFormData] = useState({});
 
@@ -27,6 +29,9 @@ const UpdateAccount = () => {
         window.confirm(
           "Are you sure you want to delete your account? This action is PERMANENT and your information cannot be recovered."
         );
+        setCurrentUser(null);
+        sessionStorage.removeItem("user");
+        history.push("/login");
       })
       .catch((err) => {
         console.log(err);

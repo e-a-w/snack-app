@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
-import { useHistory } from "react-router-dom";
+import { Container, Button } from "react-bootstrap";
+import { useHistory, Link } from "react-router-dom";
 import SnackBasket from "../assets/SnackBasket.png";
 import axios from "axios";
 
@@ -19,65 +20,55 @@ const Footer = () => {
   };
 
   return (
-    <div className="main-footer">
-      <div className="container">
-        <div className="row">
-          {}
-          <div className="col">
-            <a href={`/`}>
-              <img
-                className="logo"
-                alt="logo"
-                width="150px"
-                src={SnackBasket}
-              />{" "}
-            </a>
-            <p>
-              <em> Get your Snack on!</em>{" "}
-            </p>
-            <ul className="list-unstyled"></ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </div>
-          {}
-          <div className="col">
-            <h4>Menu</h4>
-            <ul className="list-unstyled"></ul>
-            <li
-              className="brightblue"
-              style={{ cursor: "pointer" }}
-              onClick={getRandom}
-            >
-              Random Recipe
-            </li>
-            <li href="/" className="brightblue">
-              Add This
-            </li>
-            <li href="/AboutUs" className="brightblue">
-              Add this
-            </li>
-          </div>
-          {}
-          <div className="col">
-            <h4>Follow us:</h4>
-            <ul className="list-unstyled"></ul>
-            <a href="https://www.facebook.com/wyncode/">
-              <li className="brightblue">Facebook</li>
-            </a>
-            <a href="https://www.instagram.com/wyncode">
-              <li className="brightblue">Instagram</li>
-            </a>
-            <a href="https://twitter.com/wyncode">
-              <li className="brightblue">Twitter</li>
-            </a>
-          </div>
-        </div>
-        <br />
+    <Container
+      fluid
+      className="main-footer d-flex justify-content-around text-center"
+    >
+      <div className="d-flex flex-column">
+        <Link to={`/`}>
+          <img className="logo" alt="logo" width="150px" src={SnackBasket} />
+        </Link>
+        <p>
+          <em> Get your Snack on!</em>
+        </p>
       </div>
-      <br />
-      <br />
-    </div>
+      <div className="d-flex flex-column">
+        <h4>Menu</h4>
+        <Button
+          variant="link"
+          style={{ cursor: "pointer", color: "white" }}
+          onClick={getRandom}
+        >
+          Random Recipe
+        </Button>
+        <Link to="/About">About</Link>
+        <Link to="/">?</Link>
+      </div>
+      <div className="d-flex flex-column">
+        <h4>Follow us:</h4>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://www.facebook.com/wyncode/"
+        >
+          Facebook
+        </a>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://www.instagram.com/wyncode"
+        >
+          Instagram
+        </a>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://twitter.com/wyncode"
+        >
+          Twitter
+        </a>
+      </div>
+    </Container>
   );
 };
 

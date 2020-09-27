@@ -10,6 +10,7 @@ import Account from "./pages/Account";
 import Footer from "./components/Footer";
 import SecureRoute from "./routes/SecureRoute";
 import GuestRoute from "./routes/GuestRoute";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Navaigation />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/search" component={SearchResults} />
             <Route exact path="/recipe/:id" component={RecipePage} />
             <GuestRoute exact path="/login" component={Login} />
             <GuestRoute exact path="/signup" component={SignUp} />

@@ -10,9 +10,15 @@
   flex: 1 0 auto;
 }
 
+a,
+a:visited {
+  text-decoration: none;
+}
+
 /* footer */
 
 .main-footer {
+  width: 100vw;
   flex-shrink: 0;
   color: white;
   background-color: #4c5638;
@@ -22,6 +28,16 @@
   list-style-type: none;
 }
 
+.main-footer a,
+.main-footer a:visited {
+  color: white;
+}
+
+.main-footer a:focus,
+.main-footer a:hover {
+  color: white;
+}
+
 .bottomtext {
   text-align: center;
   font-size: 10px;
@@ -29,10 +45,6 @@
 
 .logo {
   margin-bottom: 16px;
-}
-
-a {
-  text-decoration: none;
 }
 
 .jumbotron {
