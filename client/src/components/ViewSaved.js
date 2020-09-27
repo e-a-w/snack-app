@@ -24,7 +24,12 @@ const ViewSaved = () => {
       .patch(`/api/snacks?query=${snackID}`, { withCredentials: true })
       .then(({ data }) => {
         setCurrentUser(data);
-        setSnackIds(data.snacks.join());
+        if (data.snacks.length > -1) {
+          setSnackIds(data.snacks.join());
+        } else {
+          setSnackIds("");
+          setSnacks([]);
+        }
         alert("Snack removed!");
       })
       .catch((error) => console.log(error));
@@ -35,37 +40,33 @@ const ViewSaved = () => {
       {" "}
       <h3 className="mb-3">Saved Snacks:</h3>
       <div className="d-flex flex-wrap justify-content-center">
-        {currentUser &&
-          snacks?.map((snack) => {
-            return (
-              <Card
-                style={{ maxWidth: "300px" }}
-                key={snack.id}
-                className="mx-3 mb-3"
-              >
-                <Card.Header className="text-center">
-                  <Card.Title as={Link} to={`/recipe/${snack.id}`}>
-                    {snack.title}
-                  </Card.Title>
-                </Card.Header>
-                <Card.Body>
-                  <img
-                    style={{ width: "100%" }}
-                    alt="snack-img"
-                    src={snack.image}
-                  />
-                </Card.Body>
-                <Card.Footer>
-                  <Button
-                    variant="danger"
-                    onClick={() => handleRemove(snack.id)}
-                  >
-                    Remove
-                  </Button>
-                </Card.Footer>
-              </Card>
-            );
-          })}
+        {snacks?.map((snack) => {
+          return (
+            <Card
+              style={{ maxWidth: "300px" }}
+              key={snack.id}
+              className="mx-3 mb-3"
+            >
+              <Card.Header className="text-center">
+                <Card.Title as={Link} to={`/recipe/${snack.id}`}>
+                  {snack.title}
+                </Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <img
+                  style={{ width: "100%" }}
+                  alt="snack-img"
+                  src={snack.image}
+                />
+              </Card.Body>
+              <Card.Footer>
+                <Button variant="danger" onClick={() => handleRemove(snack.id)}>
+                  Remove
+                </Button>
+              </Card.Footer>
+            </Card>
+          );
+        })}
       </div>
     </>
   );
