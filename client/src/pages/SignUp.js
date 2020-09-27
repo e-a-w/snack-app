@@ -25,9 +25,10 @@ const SignUp = ({ history }) => {
         alert("Something went wrong! Try again.");
       });
   };
+
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1 className="mb-4">Sign up Now</h1>
+      <h1 className="mb-4">Sign Up Now</h1>
       <Form onSubmit={handleSubmit} style={{ width: 300 }}>
         <Form.Group>
           <Form.Label htmlFor="userame">Full Name</Form.Label>
