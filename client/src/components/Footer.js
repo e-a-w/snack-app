@@ -55,7 +55,7 @@ const Footer = () => {
         <a
           rel="noopener noreferrer"
           target="_blank"
-          href="https://www.instagram.com/wyncode"
+          href="https://www.linkedin.com/in/eawatkins/"
         >
           Liz
         </a>

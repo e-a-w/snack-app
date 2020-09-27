@@ -14,10 +14,10 @@ Snack Basket was created using React and Bootstrap on the front end, Node.js and
 
 ### Screenshots
 
-|                                                                      |                                                                        |
-| :------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-|  <img width="500px" alt="home" src="./client/src/assets/home.png"/>  | <img width="500px" alt="recipe" src="./client/src/assets/recipe.png"/> |
-| <img width="500px" alt="saved" src="./client/src/assets/saved.png"/> |  <img width="500px" alt="about" src="./client/src/assets/about.png"/>  |
+|                                                                |                                                                  |
+| :------------------------------------------------------------: | :--------------------------------------------------------------: |
+|  <img width="500px" alt="home" src="./screenshots/home.png"/>  | <img width="500px" alt="recipe" src="./screenshots/recipe.png"/> |
+| <img width="500px" alt="saved" src="./screenshots/saved.png"/> |  <img width="500px" alt="about" src="./screenshots/about.png"/>  |
 
 ### Getting Started
 
