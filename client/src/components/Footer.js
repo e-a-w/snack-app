@@ -48,23 +48,23 @@ const Footer = () => {
         <a
           rel="noopener noreferrer"
           target="_blank"
-          href="https://www.facebook.com/wyncode/"
+          href="https://www.linkedin.com/in/fmarq/"
         >
-          Facebook
+          Francesca
         </a>
         <a
           rel="noopener noreferrer"
           target="_blank"
           href="https://www.instagram.com/wyncode"
         >
-          Instagram
+          Liz
         </a>
         <a
           rel="noopener noreferrer"
           target="_blank"
-          href="https://twitter.com/wyncode"
+          href="https://www.linkedin.com/in/christopher-falcon/"
         >
-          Twitter
+          Chris
         </a>
       </div>
     </Container>
