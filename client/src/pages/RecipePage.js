@@ -18,25 +18,37 @@ const RecipePage = ({ match }) => {
 
   return (
     <Container className="d-flex flex-column align-items-center">
-      <h2 className="name">{recipe?.title}</h2>
-      <div className="box">
-        <SaveRecipe snackID={id} />
-        <img className="recipe-img" alt="Placeholder" src={recipe?.image} />
-        <div className="recipe">
-          <h4>Instructions:</h4>
-          <div>{parse(`${recipe?.instructions}`)}</div>
-          <h4>Ingredients:</h4>
-          <ul>
-            {recipe?.extendedIngredients?.map((ing, i) => {
-              return <li key={i}>{ing.name}</li>;
-            })}
-          </ul>
-          <h4>Servings</h4>
-          <p>{recipe?.servings}</p>
-          <h4>Prep Time</h4>
-          <p>{recipe?.readyInMinutes}</p>
-        </div>
-      </div>
+      {recipe ? (
+        <>
+          {" "}
+          <h2 className="name">{recipe?.title}</h2>
+          <div className="box">
+            <SaveRecipe snackID={id} />
+            <img className="recipe-img" alt="Placeholder" src={recipe?.image} />
+            <div className="recipe">
+              <h4>Instructions:</h4>
+              <div>{parse(`${recipe?.instructions}`)}</div>
+              <h4>Ingredients:</h4>
+              <ul>
+                {recipe?.extendedIngredients?.map((ing, i) => {
+                  return <li key={i}>{ing.name}</li>;
+                })}
+              </ul>
+              <h4>Servings</h4>
+              <p>{recipe?.servings}</p>
+              <h4>Prep Time</h4>
+              <p>{recipe?.readyInMinutes}</p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <h1>Loading...</h1>
+          <h5>
+            if you see this message for more than few seconds, try refreshing
+          </h5>
+        </>
+      )}
     </Container>
   );
 };

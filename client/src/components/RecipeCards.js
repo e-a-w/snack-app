@@ -1,19 +1,39 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import RecipeRow from "./RecipeRow";
+import axios from "axios";
 
 const RecipeCards = () => {
+  const [rowOne, setRowOne] = useState();
+  const [rowTwo, setRowTwo] = useState();
+  const [rowThree, setRowThree] = useState();
+
+  useEffect(() => {
+    axios
+      .get("/api/recipe/random/3/vegetarian")
+      .then(({ data }) => {
+        setRowOne(data.recipes);
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get("/api/recipe/random/3/snacks")
+      .then(({ data }) => {
+        setRowTwo(data.recipes);
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get("/api/recipe/random/3/drinks")
+      .then(({ data }) => {
+        setRowThree(data.recipes);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <Card style={{ width: "18rem" }} className="mx-5">
-      <Card.Img variant="top" src="" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <>
+      <RecipeRow recipes={rowOne} title="Vegetarian" />
+      <RecipeRow recipes={rowTwo} title="Snacks" />
+      <RecipeRow recipes={rowThree} title="Drinks" />
+    </>
   );
 };
 

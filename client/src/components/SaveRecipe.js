@@ -24,12 +24,16 @@ const SaveRecipe = ({ snackID }) => {
   }, [currentUser, snackID]);
 
   const handleClick = () => {
-    axios
-      .patch(`/api/snacks?query=${snackID}`, { withCredentials: true })
-      .then(({ data }) => {
-        setCurrentUser(data);
-      })
-      .catch((error) => console.log(error));
+    if (currentUser) {
+      axios
+        .patch(`/api/snacks?query=${snackID}`, { withCredentials: true })
+        .then(({ data }) => {
+          setCurrentUser(data);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      alert("Sorry, you must be logged in to save recipes!");
+    }
   };
 
   return (

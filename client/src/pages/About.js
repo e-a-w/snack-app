@@ -20,7 +20,7 @@ const About = () => {
           for the Shellhacks 2020 hackathon! Our snack data is courtesy of the{" "}
           <a
             href="https://spoonacular.com/food-api/"
-            rel="noopener no referrer"
+            rel="noopener noreferrer"
             target="_blank"
           >
             Spoonacular API
@@ -30,7 +30,7 @@ const About = () => {
         <p>
           You can check out the project repository on GitHub{" "}
           <a
-            rel="noopener no referrer"
+            rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/e-a-w/snack-basket"
           >

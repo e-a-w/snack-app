@@ -42,7 +42,6 @@ const Footer = () => {
           Random Recipe
         </Button>
         <Link to="/about">About</Link>
-        <Link to="/">?</Link>
       </div>
       <div className="d-flex flex-column">
         <h4>Follow us:</h4>

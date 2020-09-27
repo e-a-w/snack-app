@@ -18,6 +18,22 @@ router.get("/api/recipe/random", async (req, res) => {
   }
 });
 
+// Get Multiple Random Recipes
+router.get("/api/recipe/random/:number/:type", async (req, res) => {
+  try {
+    const { number, type } = req.params;
+    const { data } = await axios.get(
+      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR}&number=${number}&tags=${type}`
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      res.status(500).json({ error: error.toString() });
+    }
+  }
+});
+
 // Search Recipes
 router.post("/api/recipe/search", async (req, res) => {
   try {
