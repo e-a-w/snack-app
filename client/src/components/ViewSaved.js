@@ -10,12 +10,14 @@ const ViewSaved = () => {
   const [snacks, setSnacks] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`/api/snacks/${snackIds}`, { withCredentials: true })
-      .then(({ data }) => {
-        setSnacks(data);
-      })
-      .catch((err) => console.log(err));
+    if (snackIds) {
+      axios
+        .get(`/api/snacks/${snackIds}`, { withCredentials: true })
+        .then(({ data }) => {
+          setSnacks(data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [snackIds]);
 
   const handleRemove = (snackID) => {
